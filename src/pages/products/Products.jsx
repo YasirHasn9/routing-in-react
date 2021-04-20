@@ -1,11 +1,14 @@
-import { Link, Route, useLocation } from "react-router-dom";
+import { Link, Route, useParams } from "react-router-dom";
 import { Wrapper, Images } from "./style";
 
 import { Product } from "./Product/Product";
 import { useState } from "react";
 export const Products = (props) => {
-  let location = useLocation();
-
+  console.log(props);
+  const {
+    match: { url },
+  } = props;
+  console.log(url);
   const [modifiedProducts, setModifiedProducts] = useState([]);
   let filterCategories = {};
   props.products.forEach((product) => {
@@ -36,7 +39,7 @@ export const Products = (props) => {
         <Images>
           {modifiedProducts.map((product) => {
             return (
-              <Link key={product.id} to={`/products/${product.id}`}>
+              <Link key={product.id} to={`${url}/${product.id}`}>
                 <img src={product.image} alt={product.image} />
               </Link>
             );
@@ -45,7 +48,7 @@ export const Products = (props) => {
       )}
       <Route
         exact
-        path="/products/:id"
+        path={`${url}/:id`}
         render={(renderProps) => (
           <Product {...renderProps} products={props.products} />
         )}
