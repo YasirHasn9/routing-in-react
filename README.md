@@ -38,6 +38,10 @@ function App(){
 }
 ```
 
+`<Link to="pathName">`
+{to} props in the Link refers to different type of paths: relative and absolute.
+relative is when the url is part of the current page. Let's say you are of products page that has the url `currentPageUrl/product/` and want to see a specific details about one product like shoes so the url of the page would be `currentPageUrl/product/shoes/1` so `shoes/1` is relative of url page because it gets appended to the url. With absolute, it would be `currentPageUrl/shoes/1`
+
 ### Route
 
 The Route package comes with configurations that helps us to solidified our logic

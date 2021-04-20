@@ -4,26 +4,26 @@ import { Component } from "react";
 // Link helps the users to navigate them to the wanted pages depends on the path
 import { Route, Link } from "react-router-dom";
 import { api } from "./api/withAxios";
-import "./App.css";
 
 // pages
 import { Home } from "./pages/home";
 import { About } from "./pages/about";
 import { Account } from "./pages/account";
-import { Products } from "./pages/Products";
+import { Products } from "./pages/products/Products";
 class App extends Component {
   state = {
-    product: [],
+    products: [],
   };
   componentDidMount() {
     api
       .get("/products")
       .then((res) => {
-        let newProducts = res.data.slice(0, 4);
-        this.setState({ product: newProducts });
+        this.setState({ products: res.data });
       })
       .catch((err) => console.log("error", err));
   }
+  // fakestoreapi.com/products?category=menclothing
+
   render() {
     return (
       <div className="App">
@@ -45,7 +45,7 @@ class App extends Component {
                 <Link to="/account">Account</Link>
               </li>
               <li>
-                <Link to="product">Product</Link>
+                <Link to="/products">Product</Link>
               </li>
             </ul>
           </nav>
@@ -55,8 +55,11 @@ class App extends Component {
         <Route path="/about" component={About} />
         <Route path="/account" component={Account} />
         <Route
-          path="/product"
-          render={(props) => <Products product={this.state.product} />}
+          exact
+          path="/products"
+          render={(renderProps) => (
+            <Products {...renderProps} products={this.state.products} />
+          )}
         />
       </div>
     );
