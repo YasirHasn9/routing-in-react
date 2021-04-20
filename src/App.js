@@ -69,3 +69,7 @@ class App extends Component {
 }
 
 export default App;
+
+// pass render props to Route
+// @TODO Switch
+
