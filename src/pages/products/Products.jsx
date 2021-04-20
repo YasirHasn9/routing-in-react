@@ -1,9 +1,11 @@
 import { Link, Route, useLocation } from "react-router-dom";
-import { Wrapper } from "./style";
+import { Wrapper, Images } from "./style";
 
 import { Product } from "./Product/Product";
 import { useState } from "react";
 export const Products = (props) => {
+  let location = useLocation();
+
   const [modifiedProducts, setModifiedProducts] = useState([]);
   let filterCategories = {};
   props.products.forEach((product) => {
@@ -29,14 +31,25 @@ export const Products = (props) => {
           </li>
         ))}
       </ul>
-      {modifiedProducts.map((product) => {
-        return <Product product={product} />;
-      })}
+
+      {modifiedProducts.length > 0 && (
+        <Images>
+          {modifiedProducts.map((product) => {
+            return (
+              <Link key={product.id} to={`/products/${product.id}`}>
+                <img src={product.image} alt={product.image} />
+              </Link>
+            );
+          })}
+        </Images>
+      )}
+      <Route
+        exact
+        path="/products/:id"
+        render={(renderProps) => (
+          <Product {...renderProps} products={props.products} />
+        )}
+      />
     </Wrapper>
   );
 };
-
-// i receive the data
-// loop over them
-// make a button for each category
-// make a function that filter the data that belongs for the category

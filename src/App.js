@@ -2,7 +2,7 @@ import { Component } from "react";
 // we need to import Router and link packages from react-router-dom
 // Router helps to render a specific code for each path
 // Link helps the users to navigate them to the wanted pages depends on the path
-import { Route, Link, NavLink } from "react-router-dom";
+import { Route, Link, NavLink, Switch } from "react-router-dom";
 import { api } from "./api/withAxios";
 
 // pages
@@ -53,11 +53,13 @@ class App extends Component {
           </nav>
         </header>
         {/* exact stand for exactly and only applied if the path is matched exactly. */}
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/account" component={Account} />
+        <Switch>
+          {" "}
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/account" component={Account} />
+        </Switch>
         <Route
-          exact
           path="/products"
           render={(renderProps) => (
             <Products {...renderProps} products={this.state.products} />
@@ -72,4 +74,3 @@ export default App;
 
 // pass render props to Route
 // @TODO Switch
-

@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  padding: 40px;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  img {
+    width: 50%;
+    border-radius: 20px;
+    border: 2px solid #000;
+  }
 `;
