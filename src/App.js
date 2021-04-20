@@ -2,7 +2,7 @@ import { Component } from "react";
 // we need to import Router and link packages from react-router-dom
 // Router helps to render a specific code for each path
 // Link helps the users to navigate them to the wanted pages depends on the path
-import { Route, Link } from "react-router-dom";
+import { Route, Link, NavLink } from "react-router-dom";
 import { api } from "./api/withAxios";
 
 // pages
@@ -36,16 +36,18 @@ class App extends Component {
                 prevent the page from reloading
                 needs {to} prop to set it to a path name
                  */}
-                <Link to="/">Home</Link>
+                <NavLink exact to="/">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li>
-                <Link to="/account">Account</Link>
+                <NavLink to="/account">Account</NavLink>
               </li>
               <li>
-                <Link to="/products">Product</Link>
+                <NavLink to="/products">Product</NavLink>
               </li>
             </ul>
           </nav>

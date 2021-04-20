@@ -51,3 +51,11 @@ like `path`, `exact`, `render`, `component` and `children`
 `component` need a reference to a Component
 `render` function that helps to pass props to the component
 `children` is function that works exactly like render excepts it helps us to find if we have matched path or not
+
+#### Link
+
+it create an anchor tag that helps to navigate between the pages in the app through using the url
+
+#### NavLink
+
+it works same as Link between with extra feature like we can style the anchor tag if it was in active mood by adding a className called active.
